@@ -8,13 +8,13 @@
  * returning some 1x1 pixel image
  */
 class Tracking {
-    
+
     /**
      * Output file types
      */
     const TYPE_GIF = 0;
     const TYPE_PNG = 1;
-    
+
     /**
      * pixels
      */
@@ -36,7 +36,7 @@ Q3JlYXRlZCB3aXRoIEdJTVBXgQ4XAAAADUlEQVQI12NgYGBgAAAABQABXvMqOgAAAABJRU5ErkJggg==
             error_log('Unknown type, please use class constants.');
         }
     }
-    
+
     /**
      * Returns the pixel and log provided string
      * @param $log string to log
@@ -58,7 +58,7 @@ Q3JlYXRlZCB3aXRoIEdJTVBXgQ4XAAAADUlEQVQI12NgYGBgAAAABQABXvMqOgAAAABJRU5ErkJggg==
         }
         return base64_decode($pixel);
     }
-    
+
     /**
      * Saves the tracking information somewhere
      * @param $log track somewhere
@@ -67,7 +67,7 @@ Q3JlYXRlZCB3aXRoIEdJTVBXgQ4XAAAADUlEQVQI12NgYGBgAAAABQABXvMqOgAAAABJRU5ErkJggg==
         // here goes your own logging class
         error_log(time() . ' : ' . $log);
     }
-    
+
     protected function setHeaders() {
         // set standard headers
         header('Cache-Control: no-cache');
@@ -76,7 +76,7 @@ Q3JlYXRlZCB3aXRoIEdJTVBXgQ4XAAAADUlEQVQI12NgYGBgAAAABQABXvMqOgAAAABJRU5ErkJggg==
         if (strstr($_SERVER["HTTP_USER_AGENT"], "MSIE")) {
             header('P3P: CP="NOI DSP CURa ADMa DEVa TAIa OUR BUS IND UNI COM NAV INT"');
         }
-        
+    
         // set length, based on type (use strlen() for custom types)
         if (self::TYPE_PNG == $this->type) {
             header('Content-type: image/png');
